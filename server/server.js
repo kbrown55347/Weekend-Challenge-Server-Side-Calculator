@@ -8,17 +8,16 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Tell express where to find our 'public' files
 app.use(express.static('server/public'));
 
-let history = [];
+// let history = [];
 
 // Tell server to retrieve input info from client side
 // using POST
 app.post('/numbers', function(req, res) {
     console.log("Numbers:", req.body);
-    history.push(req.body);
+    // history.push(req.body);
     // console.log(history);
     res.sendStatus(201);
 });
-
 
 // Starts server and listens for requests:
 app.listen(5000, function() {

@@ -1,5 +1,9 @@
 $(document).ready(onReady);
 
+
+// set global operator variable;
+let operatorId;
+
 function onReady() {
     // Wire '=' button to run handleEquals
     $('#equals-btn').on('click', handleEquals);
@@ -8,13 +12,19 @@ function onReady() {
     $('.operator').on('click', handleOperator);
 }
 
-// Create function to handle '=' click, bundle inputs
-// as object and use POST to send info to server
+// Create function to find id of clicked operator button
+function handleOperator() {
+    operatorId = $(this).attr('id');
+    // console.log(operatorId);
+} // end handleOperator
+
+// Create function to handle '=' click, bundle inputs and
+// operator as object and use POST to send info to server
 function handleEquals() {
     let numbers = {
     firstNumber: $('#first-num-input').val(),
     secondNumber: $('#second-num-input').val(),
-    // operator: operator,    
+    operator: operatorId    
     };
     $.ajax({
         method: 'POST',
@@ -26,12 +36,6 @@ function handleEquals() {
         console.log('numbers object did NOT send', error);
     })
 } // end handleEquals
-
-
-function handleOperator() {
-    console.log($(this).attr('id'));
-} // end handleOperator
-
 
 
 // Create function to clear input fields on click of 

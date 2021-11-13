@@ -17,7 +17,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 [x] Create function to capture input on click of '=', bundle as object and use POST on client side to send info to server side
 [x] Wire server side (app.post) to get input object data from client side
 [x] Create function to clear input fields on click of 'C' button
-[] Create functions to handle each mathematical operator click on client side and wire to server side via POST
+[x] Create functions to handle each mathematical operator click on client side and bundle with numbers object
 [] Create function on server side to do mathematical calculation and send back OK when done (res.send(200)).  
 [] Create function with GET request on client side to get actual calculation from server side
 [] Create function on client side to GET record of math operations and solutions and display as table in DOM
