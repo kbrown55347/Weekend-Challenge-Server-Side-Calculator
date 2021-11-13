@@ -3,6 +3,8 @@ $(document).ready(onReady);
 function onReady() {
     // Wire '=' button to run handleEquals
     $('#equals-btn').on('click', handleEquals);
+    // Wire 'C' button to clear inputs
+    $('#clear-btn').on('click', handleClearButton);
 }
 
 // Create function to handle '=' click, bundle inputs
@@ -22,3 +24,11 @@ function handleEquals() {
         console.log('numbers object did NOT send', error);
     })
 } // end handleEquals
+
+// Create function to clear input fields on click of 
+// 'C' button
+function handleClearButton() {
+    $('#first-num-input').val('');
+    $('#second-num-input').val('');
+    // console.log('ALL CLEAR');
+} // handleClearButton

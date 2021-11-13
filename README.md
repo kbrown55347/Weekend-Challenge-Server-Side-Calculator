@@ -14,8 +14,8 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 * Do not use .eval() 
 [x] npm installs, create server folder and public folder, create, source and test client js, server js, html, css, jquery files
 [x] Create basic layout for app in html file
-[] Create function to capture input on click of '=', bundle as object and use POST on client side to send info to server side
-[] Create function to clear input fields on click of 'C' button
+[x] Create function to capture input on click of '=', bundle as object and use POST on client side to send info to server side
+[x] Create function to clear input fields on click of 'C' button
 [] Wire server side (app.post) to get input object data from client side
 [] Create function on server side to do mathematical calculation and send back OK when done (res.send(200)).  
 [] Create function with GET request on client side to get actual calculation from server side
