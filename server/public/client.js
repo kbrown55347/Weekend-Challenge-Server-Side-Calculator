@@ -5,6 +5,7 @@ function onReady() {
     $('#equals-btn').on('click', handleEquals);
     // Wire 'C' button to clear inputs
     $('#clear-btn').on('click', handleClearButton);
+    $('.operator').on('click', handleOperator);
 }
 
 // Create function to handle '=' click, bundle inputs
@@ -13,6 +14,7 @@ function handleEquals() {
     let numbers = {
     firstNumber: $('#first-num-input').val(),
     secondNumber: $('#second-num-input').val(),
+    // operator: operator,    
     };
     $.ajax({
         method: 'POST',
@@ -24,6 +26,13 @@ function handleEquals() {
         console.log('numbers object did NOT send', error);
     })
 } // end handleEquals
+
+
+function handleOperator() {
+    console.log($(this).attr('id'));
+} // end handleOperator
+
+
 
 // Create function to clear input fields on click of 
 // 'C' button
