@@ -40,13 +40,13 @@ function handleEquals() {
 
 // Create function to GET answerToDisplay from /answer
 // and display on DOM
-
 function displayAnswer() {
     $.ajax({
         method: 'GET',
         url: '/answer',
     }).then(function(response) {
         // console.log('GET number sent', response.answer);
+        $('#answer').empty();
         $('#answer').append(response.answer);
     }).catch(function(error) {
         console.log('GET number did NOT send', error);

@@ -8,7 +8,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Tell express where to find our 'public' files
 app.use(express.static('server/public'));
 
-// let history = [];
+let history = [];
+let numbers = [];
 let answerToDisplay;
 
 
@@ -19,20 +20,28 @@ app.post('/numbers', function(req, res) {
     answerToDisplay = {
         answer: calculate(req.body)
     };
-    // history.push(req.body);
-    // console.log(history);
+    numbers.push(req.body);
+    console.log('in numbers array', numbers);
     res.sendStatus(201);
 });
+
+// create function to add history and answer to array
+// function addHistory() {
+//     let calculationAndAnswer = {
+//         firstNum: firstNum,
+//         operation: operation,
+//         secondNum: secondNum,
+//         answer: answer,
+//     }
+//     History.push(history);
+//     console.log(history);
+// }
 
 app.get('/answer', function(req, res) {
     // console.log('in GET /answer', answerToDisplay);
     res.send(answerToDisplay);
 });
 
-// Starts server and listens for requests:
-app.listen(5000, function() {
-    console.log('Your express server is running!');
-});
 
 // Create function to do mathematical calculation
 function calculate(object) {
@@ -48,3 +57,9 @@ function calculate(object) {
     }
     return answer;
 } // end calculate
+
+
+// Starts server and listens for requests:
+app.listen(5000, function() {
+    console.log('Your express server is running!');
+});
