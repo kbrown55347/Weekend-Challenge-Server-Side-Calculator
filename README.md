@@ -13,7 +13,7 @@ Additional README details can be found [here](https://github.com/PrimeAcademy/re
 * Logic must be on server-side
 * Do not use .eval() 
 [x] npm installs, create server folder and public folder, create, source and test client js, server js, html, css, jquery files
-[] Create basic layout for app in html file
+[x] Create basic layout for app in html file
 [] Create function to capture input on click of '=', bundle as object and use POST on client side to send info to server side
 [] Create function to clear input fields on click of 'C' button
 [] Wire server side (app.post) to get input object data from client side
