@@ -35,8 +35,23 @@ function handleEquals() {
     }).catch(function(error) {
         console.log('numbers object did NOT send', error);
     })
+    displayAnswer();
 } // end handleEquals
 
+// Create function to GET answerToDisplay from /answer
+// and display on DOM
+
+function displayAnswer() {
+    $.ajax({
+        method: 'GET',
+        url: '/answer',
+    }).then(function(response) {
+        // console.log('GET number sent', response.answer);
+        $('#answer').append(response.answer);
+    }).catch(function(error) {
+        console.log('GET number did NOT send', error);
+    })
+} // end displayAnswer
 
 // Create function to clear input fields on click of 
 // 'C' button

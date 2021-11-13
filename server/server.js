@@ -8,18 +8,25 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Tell express where to find our 'public' files
 app.use(express.static('server/public'));
 
-let history = [];
-
+// let history = [];
+let answerToDisplay;
 
 
 // Tell server to retrieve input info from client side
 // using POST
 app.post('/numbers', function(req, res) {
-    console.log("Numbers:", req.body);
-    calculate(req.body);
+    // console.log("Numbers:", req.body);
+    answerToDisplay = {
+        answer: calculate(req.body)
+    };
     // history.push(req.body);
     // console.log(history);
     res.sendStatus(201);
+});
+
+app.get('/answer', function(req, res) {
+    // console.log('in GET /answer', answerToDisplay);
+    res.send(answerToDisplay);
 });
 
 // Starts server and listens for requests:
@@ -39,5 +46,5 @@ function calculate(object) {
     } else if (object.operator === 'divide-btn') {
         answer = Number(object.firstNumber) / Number(object.secondNumber);
     }
-    console.log(answer);
+    return answer;
 } // end calculate
