@@ -3,6 +3,7 @@ $(document).ready(onReady);
 
 // set global operator variable;
 let operatorId;
+let sign;
 
 function onReady() {
     // Wire '=' button to run handleEquals
@@ -47,7 +48,10 @@ function displayAnswer() {
     }).then(function(response) {
         // console.log('GET number sent', response.answer);
         $('#answer').empty();
-        $('#answer').append(response.answer);
+        $('#answer').append(response[response.length-1].answer);
+        console.log(response[response.length-1].answer);
+        $('#history-list').empty();
+        displayHistory(response);
     }).catch(function(error) {
         console.log('GET number did NOT send', error);
     })
@@ -60,3 +64,17 @@ function handleClearButton() {
     $('#second-num-input').val('');
     // console.log('ALL CLEAR');
 } // handleClearButton
+
+// Create function to iterate through history array
+// and append each object to DOM
+
+function displayHistory(array) {
+    for (let item of array) {
+        if (item.operation === 'add-btn') {
+            sign = '+';
+        }
+        $('#history-list').append(`
+        <li>${item.firstNum}${sign}${item.secondNum}=${item.answer}</li>
+        `);
+    }
+} // end displayHistory

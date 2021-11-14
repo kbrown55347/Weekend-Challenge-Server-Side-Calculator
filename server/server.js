@@ -10,16 +10,14 @@ app.use(express.static('server/public'));
 
 let history = [];
 let numbers = [];
-let answerToDisplay;
+let answer;
 
 
 // Tell server to retrieve input info from client side
 // using POST
 app.post('/numbers', function(req, res) {
     // console.log("Numbers:", req.body);
-    answerToDisplay = {
-        answer: calculate(req.body)
-    };
+    answer = calculate(req.body)
     numbers.push(req.body);
     // console.log('in numbers array', numbers);
     res.sendStatus(201);
@@ -33,22 +31,21 @@ function addHistory(array) {
             firstNum: lastItem.firstNumber,
             operation: lastItem.operator,
             secondNum: lastItem.secondNumber,
-            answer: answerToDisplay,
+            answer: answer,
         }
     history.push(calculationAndAnswer);
     // console.log('in addHistory', history);
 }
 
 app.get('/answer', function(req, res) {
-    // console.log('in GET /answer', answerToDisplay);
-    res.send(answerToDisplay);
     addHistory(numbers);
+    res.send(history);
 });
 
 
 // Create function to do mathematical calculation
 function calculate(object) {
-    let answer = 0;
+    answer = 0;
     if (object.operator === 'add-btn') {
         answer = Number(object.firstNumber) + Number(object.secondNumber);
     } else if (object.operator === 'subtract-btn') {
