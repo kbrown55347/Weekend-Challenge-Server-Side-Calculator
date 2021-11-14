@@ -21,25 +21,28 @@ app.post('/numbers', function(req, res) {
         answer: calculate(req.body)
     };
     numbers.push(req.body);
-    console.log('in numbers array', numbers);
+    // console.log('in numbers array', numbers);
     res.sendStatus(201);
 });
 
-// create function to add history and answer to array
-// function addHistory() {
-//     let calculationAndAnswer = {
-//         firstNum: firstNum,
-//         operation: operation,
-//         secondNum: secondNum,
-//         answer: answer,
-//     }
-//     History.push(history);
-//     console.log(history);
-// }
+// create function to add history and answer to history
+// array
+function addHistory(array) {
+    let lastItem = array[array.length-1];
+        let calculationAndAnswer = {
+            firstNum: lastItem.firstNumber,
+            operation: lastItem.operator,
+            secondNum: lastItem.secondNumber,
+            answer: answerToDisplay,
+        }
+    history.push(calculationAndAnswer);
+    // console.log('in addHistory', history);
+}
 
 app.get('/answer', function(req, res) {
     // console.log('in GET /answer', answerToDisplay);
     res.send(answerToDisplay);
+    addHistory(numbers);
 });
 
 
