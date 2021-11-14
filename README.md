@@ -1,23 +1,35 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# Server Side Calculator
 
 ## Description
+---
 
-Your project description goes here. What problem did you solve? How did you solve it?
+Duration: 2 days
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+I created an application that takes in two numbers and performs a calculation.
 
+To accomplish this, I first created a basic html application layout with two input fields, buttons for addition, subtraction, multiplication and division, an equals button, a 'C' button, an area to display the result from the current calculation and an area to display a list of previous calculations. I then added functionality on the client side to capture the input number values and which operation sign button was clicked on the click of the '=' button. I then wired that information to be bundled and sent to the server side. Next, on the server side, I created a function to perform a calculation based on the information that was received. Then I created a function to bundle the input numbers, operator and answer in an object and pushed that object to an array. I then wired that information to be sent to the client side and there I created a function to display the result of the current calculation and a history of all the previous calculations. Lastly, I created and wired a function on the client side to clear the input number fields on the click of the 'C' button.
 
-## Project Map
-* Logic must be on server-side
-* Do not use .eval() 
-[x] npm installs, create server folder and public folder, create, source and test client js, server js, html, css, jquery files
-[x] Create basic layout for app in html file
-[x] Create function to capture input on click of '=', bundle as object and use POST on client side to send info to server side
-[x] Wire server side (app.post) to get input object data from client side
-[x] Create function to clear input fields on click of 'C' button
-[x] Create functions to handle each mathematical operator click on client side and bundle with numbers object
-[x] Create function on server side to do mathematical calculation and send back OK when done (res.send(201)) 
-[x] Create function with GET request on client side to get actual calculation from server side
-[x] Create function on client side to GET record of math operations and solutions and display as table in DOM
+## Screen Shot
+---
+![alt text](calculator-display.png)
+
+## Usage
+---
+1. 
+
+2. 
+
+3. 
+
+## Built With
+---
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- Node.js
+- Express.js
+
+## Acknowledgment
+---
+Thank you to Prime Digital Academy, my instructor and my classmates who equipped and helped me to make this application!
