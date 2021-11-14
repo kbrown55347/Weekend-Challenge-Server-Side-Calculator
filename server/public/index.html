@@ -10,28 +10,29 @@
     <script src="client.js"></script>
     <title>Server Side Calculator</title>
 </head>
+
 <header>
     <h1>Server Side Calculator</h1>
 </header>
 
 <body>
-<div>
-    <input id="first-num-input" type="number">
+<div id="inputs-buttons">
+    <input placeholder="number" id="first-num-input" type="number">
     <button class="operator" id="add-btn">+</button>
     <button class="operator" id="subtract-btn">-</button>
     <button class="operator" id="multiply-btn">x</button>
     <button class="operator" id="divide-btn">/</button>
-    <input id="second-num-input" type="number">
+    <input placeholder="number" id="second-num-input" type="number">
     <button id="equals-btn">=</button>
     <button id="clear-btn">C</button>
 </div>
 
-<h3><span id="answer"></span></h3>
-<ul id="history-list">
-    <li>12 x 1 = 12</li>
-    <li>36 / 6 = 6</li>
-</ul>
+<div id="display">
+    <h3><span id="answer"></span></h3>
+    <h4>Previous Calculations:</h4>
+    <ul id="history-list">
+    </ul>
+</div>
 
 </body>
-
 </html>

@@ -1,7 +1,5 @@
 $(document).ready(onReady);
 
-
-// set global operator variable;
 let operatorId;
 let sign;
 
@@ -22,7 +20,7 @@ function handleOperator() {
 // Create function to handle '=' click, bundle inputs and
 // operator as object and use POST to send info to server
 function handleEquals() {
-    let numbers = {
+    let numbersAndSign = {
     firstNumber: $('#first-num-input').val(),
     secondNumber: $('#second-num-input').val(),
     operator: operatorId    
@@ -30,7 +28,7 @@ function handleEquals() {
     $.ajax({
         method: 'POST',
         url: '/numbers',
-        data: numbers
+        data: numbersAndSign
     }).then(function(response) {
         console.log('numbers object sent', response);
     }).catch(function(error) {
@@ -39,17 +37,16 @@ function handleEquals() {
     displayAnswer();
 } // end handleEquals
 
-// Create function to GET answerToDisplay from /answer
-// and display on DOM
+// Create function to GET answer and history from /answer
+// route and display on DOM
 function displayAnswer() {
     $.ajax({
         method: 'GET',
         url: '/answer',
     }).then(function(response) {
-        // console.log('GET number sent', response.answer);
         $('#answer').empty();
         $('#answer').append(response[response.length-1].answer);
-        console.log(response[response.length-1].answer);
+        // console.log(response[response.length-1].answer);
         $('#history-list').empty();
         displayHistory(response);
     }).catch(function(error) {
@@ -57,24 +54,29 @@ function displayAnswer() {
     })
 } // end displayAnswer
 
+// Create function to be able to iterate through history 
+// array and append each object to DOM
+function displayHistory(array) {
+    for (let item of array) {
+        if (item.operation === 'add-btn') {
+            sign = '+';
+        } else if (item.operation === 'subtract-btn') {
+            sign = '-';
+        } else if (item.operation === 'multiply-btn') {
+            sign = 'x';
+        } else if (item.operation === 'divide-btn') {
+            sign = '/';
+        }
+        $('#history-list').append(`
+        <li>${item.firstNum} ${sign} ${item.secondNum} = ${item.answer}</li>
+        `);
+    }
+} // end displayHistory
+
 // Create function to clear input fields on click of 
 // 'C' button
 function handleClearButton() {
     $('#first-num-input').val('');
     $('#second-num-input').val('');
     // console.log('ALL CLEAR');
-} // handleClearButton
-
-// Create function to iterate through history array
-// and append each object to DOM
-
-function displayHistory(array) {
-    for (let item of array) {
-        if (item.operation === 'add-btn') {
-            sign = '+';
-        }
-        $('#history-list').append(`
-        <li>${item.firstNum}${sign}${item.secondNum}=${item.answer}</li>
-        `);
-    }
-} // end displayHistory
+} // end handleClearButton

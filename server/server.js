@@ -12,7 +12,6 @@ let history = [];
 let numbers = [];
 let answer;
 
-
 // Tell server to retrieve input info from client side
 // using POST
 app.post('/numbers', function(req, res) {
@@ -23,15 +22,15 @@ app.post('/numbers', function(req, res) {
     res.sendStatus(201);
 });
 
-// create function to add history and answer to history
-// array
+// create function to add most recent calculation and answer 
+// bundled in one object to history array
 function addHistory(array) {
     let lastItem = array[array.length-1];
         let calculationAndAnswer = {
             firstNum: lastItem.firstNumber,
             operation: lastItem.operator,
             secondNum: lastItem.secondNumber,
-            answer: answer,
+            answer: answer
         }
     history.push(calculationAndAnswer);
     // console.log('in addHistory', history);

@@ -1,3 +1,15 @@
+header {
+    background-color: #696969;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+#inputs-buttons, #display {
+    margin: 1em;
+}
+
 body {
     background-color: lightsalmon;
+    margin: 0;
 }
