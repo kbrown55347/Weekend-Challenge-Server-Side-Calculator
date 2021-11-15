@@ -19,15 +19,15 @@ let sign;
 app.post('/numbers', function(req, res) {
     // console.log("Numbers:", req.body);
     numbers.push(req.body);
+    calculate(numbers);
+    bundleHistoryAndAnswer(numbers);
+    // console.log('in numbers', numbers);
+    createListItems(history);
     // console.log('in numbers array', numbers);
     res.sendStatus(201);
 });
 
 app.get('/answer', function(req, res) {
-    calculate(numbers);
-    bundleHistoryAndAnswer(numbers);
-    // console.log('in numbers', numbers);
-    createListItems(history);
     res.send(listItems);
     //console.log('in listItems', listItems);
 });

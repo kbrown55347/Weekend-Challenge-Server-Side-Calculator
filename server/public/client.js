@@ -3,6 +3,7 @@ $(document).ready(onReady);
 let operatorId;
 
 function onReady() {
+    displayAnswer();
     // Wire '=' button to run handleEquals
     $('#equals-btn').on('click', handleEquals);
     // Wire 'C' button to clear inputs
@@ -46,19 +47,14 @@ function displayAnswer() {
         $('#answer').empty();
         $('#answer').append(response[response.length-1].itemAnswer);
         $('#history-list').empty();
-        displayHistory(response);        
+        for (let item of response) {
+            $('#history-list').append(item.listItem);
+        };
+        // displayHistory(response);        
     }).catch(function(error) {
         console.log('GET number did NOT send', error);
     })
 } // end displayAnswer
-
-// Create function to be able to iterate through listItems 
-// array and append each listItem to ul
-function displayHistory(array) {
-    for (let item of array) {
-        $('#history-list').append(item.listItem);
-    }
-}// end displayHistory
 
 // Create function to clear input fields on click of 
 // 'C' button
