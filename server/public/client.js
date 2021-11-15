@@ -1,7 +1,6 @@
 $(document).ready(onReady);
 
 let operatorId;
-let sign;
 
 function onReady() {
     // Wire '=' button to run handleEquals
@@ -45,33 +44,21 @@ function displayAnswer() {
         url: '/answer',
     }).then(function(response) {
         $('#answer').empty();
-        $('#answer').append(response[response.length-1].answer);
-        // console.log(response[response.length-1].answer);
+        $('#answer').append(response[response.length-1].itemAnswer);
         $('#history-list').empty();
-        displayHistory(response);
+        displayHistory(response);        
     }).catch(function(error) {
         console.log('GET number did NOT send', error);
     })
 } // end displayAnswer
 
-// Create function to be able to iterate through history 
-// array and append each object to DOM
+// Create function to be able to iterate through listItems 
+// array and append each listItem to ul
 function displayHistory(array) {
     for (let item of array) {
-        if (item.operation === 'add-btn') {
-            sign = '+';
-        } else if (item.operation === 'subtract-btn') {
-            sign = '-';
-        } else if (item.operation === 'multiply-btn') {
-            sign = 'x';
-        } else if (item.operation === 'divide-btn') {
-            sign = '/';
-        }
-        $('#history-list').append(`
-        <li>${item.firstNum} ${sign} ${item.secondNum} = ${item.answer}</li>
-        `);
+        $('#history-list').append(item.listItem);
     }
-} // end displayHistory
+}// end displayHistory
 
 // Create function to clear input fields on click of 
 // 'C' button
